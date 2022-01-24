@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <AddTask />
     <Header title="Task Tracker" />
     <Tasks
       @delete-task="deleteTask"
@@ -13,11 +14,13 @@
 <script>
 import Header from './components/Header';
 import Tasks from './components/Tasks';
+import AddTask from './components/AddTask.vue';
 export default {
   name: 'App',
   components: {
     Header,
     Tasks,
+    AddTask,
   },
   data() {
     return {
