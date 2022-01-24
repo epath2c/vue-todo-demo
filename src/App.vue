@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <Header title="Task Tracker" />
-    <Tasks @delete-task="deleteTask" :tasks="tasks" />
+    <Tasks
+      @delete-task="deleteTask"
+      :tasks="tasks"
+      @toggle-reminder="toggleReminder"
+    />
     <!-- this 'deleteTask is a method' -->
   </div>
 </template>
@@ -23,10 +27,14 @@ export default {
   methods: {
     deleteTask(id) {
       console.log('task', id);
-      // * we clicked a button in the Task component, but the function we fired lives in the App component. Since we have all our data in the App component, this can modify our data more reasonably.
       if (confirm('Are you sure?')) {
         this.tasks = this.tasks.filter((task) => task.id !== id);
       }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      );
     },
   },
   created() {
