@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <Header title="Task Tracker" />
-    <Tasks :tasks="tasks" />
+    <Tasks @delete-task="deleteTask" :tasks="tasks" />
+    <!-- this 'deleteTask is a method' -->
   </div>
 </template>
 
@@ -14,15 +15,20 @@ export default {
     Header,
     Tasks,
   },
-  // * Since we don't use third party to handle our data/state, we write our data in the top level component.
   data() {
-    // data is a function that returns an object
     return {
       tasks: [],
     };
   },
-  // * created() is a lifecycle method
-  // * it will load data everytime you load the page
+  methods: {
+    deleteTask(id) {
+      console.log('task', id);
+      // * we clicked a button in the Task component, but the function we fired lives in the App component. Since we have all our data in the App component, this can modify our data more reasonably.
+      if (confirm('Are you sure?')) {
+        this.tasks = this.tasks.filter((task) => task.id !== id);
+      }
+    },
+  },
   created() {
     this.tasks = [
       {
