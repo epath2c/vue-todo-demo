@@ -1,17 +1,49 @@
 <template>
   <div class="container">
     <Header title="Task Tracker" />
+    <Tasks :tasks="tasks" />
   </div>
 </template>
 
 <script>
-// ! Props are from parents to child, written in parent template, import in child's export script
-// * 2nd: import:
 import Header from './components/Header';
+import Tasks from './components/Tasks';
 export default {
   name: 'App',
   components: {
     Header,
+    Tasks,
+  },
+  // * Since we don't use third party to handle our data/state, we write our data in the top level component.
+  data() {
+    // data is a function that returns an object
+    return {
+      tasks: [],
+    };
+  },
+  // * created() is a lifecycle method
+  // * it will load data everytime you load the page
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: 'doctors appointment',
+        day: 'March 1st at 2:30pm',
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: 'meeting at school',
+        day: 'March 3rd at 1:30pm',
+        reminder: true,
+      },
+      {
+        id: 3,
+        text: 'food shopping',
+        day: 'March 3rd at 11:00am',
+        reminder: false,
+      },
+    ];
   },
 };
 </script>
