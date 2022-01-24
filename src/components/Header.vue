@@ -3,9 +3,6 @@
   <header>
     <h1>{{ title }}</h1>
     <Button text="Add Task" color="green" />
-    <Button text="Update Task" color="blue" />
-    <Button text="Delete Task" color="red" />
-    <!-- By this way, the button component is reusable -->
   </header>
 </template>
 
