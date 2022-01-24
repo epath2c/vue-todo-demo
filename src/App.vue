@@ -5,6 +5,7 @@
 </template>
 
 <script>
+// ! Props are from parents to child, written in parent template, import in child's export script
 // * 2nd: import:
 import Header from './components/Header';
 export default {

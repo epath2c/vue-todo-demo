@@ -2,24 +2,22 @@
   <!-- Content in this component, things you will export -->
   <header>
     <h1>{{ title }}</h1>
+    <Button text="Add Task" color="green" />
+    <Button text="Update Task" color="blue" />
+    <Button text="Delete Task" color="red" />
+    <!-- By this way, the button component is reusable -->
   </header>
 </template>
 
 <script>
-// * JS logic about this component, define export first
+import Button from './Button.vue';
 export default {
   name: 'Header',
-  //   props: ['title'],
-  //   props: {
-  //     title: String,
-  //   },
+  components: {
+    Button,
+  },
   props: {
-    title: {
-      type: String,
-      default: 'Hello World',
-      //   When you don't have a value for title, the default value will take in charge.
-    },
-    // * These three ways of defining props are all ok.
+    title: String,
   },
 };
 </script>
