@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <AddTask />
     <Header title="Task Tracker" />
+    <AddTask @add-task="addTask" />
     <Tasks
       @delete-task="deleteTask"
       :tasks="tasks"
@@ -15,6 +15,7 @@
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask.vue';
+
 export default {
   name: 'App',
   components: {
@@ -28,6 +29,9 @@ export default {
     };
   },
   methods: {
+    addTask(task) {
+      this.tasks = [...this.tasks, task];
+    },
     deleteTask(id) {
       console.log('task', id);
       if (confirm('Are you sure?')) {
