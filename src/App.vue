@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" />
+    <Header
+      @toggle-add-task="toggleAddTask"
+      title="Task Tracker"
+      :showAddTask="showAddTask"
+    />
     <div v-if="showAddTask">
       <!-- v-show="showAddTask" can also decide whether this form can be shown or not. -->
       <AddTask @add-task="addTask" />
