@@ -13,7 +13,8 @@ export default {
   },
   methods: {
     onClick() {
-      console.log('click');
+      this.$emit('toggle-add-task');
+      // * this button shows in the Header component, so the 'toggle-add-task' function is emitted to Header
     },
   },
 };

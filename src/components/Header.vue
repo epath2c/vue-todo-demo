@@ -2,7 +2,11 @@
   <!-- Content in this component, things you will export -->
   <header>
     <h1>{{ title }}</h1>
-    <Button text="Add Task" color="green" />
+    <Button
+      @toggle-add-task="$emit('toggle-add-task')"
+      text="Add Task"
+      color="green"
+    />
   </header>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker" />
-    <AddTask @add-task="addTask" />
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" />
+    <div v-if="showAddTask">
+      <!-- v-show="showAddTask" can also decide whether this form can be shown or not. -->
+      <AddTask @add-task="addTask" />
+    </div>
     <Tasks
       @delete-task="deleteTask"
       :tasks="tasks"
@@ -26,6 +29,7 @@ export default {
   data() {
     return {
       tasks: [],
+      showAddTask: false,
     };
   },
   methods: {
@@ -42,6 +46,9 @@ export default {
       this.tasks = this.tasks.map((task) =>
         task.id === id ? { ...task, reminder: !task.reminder } : task
       );
+    },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
     },
   },
   created() {
