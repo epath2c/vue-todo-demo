@@ -15,11 +15,14 @@
       @toggle-reminder="toggleReminder"
     />
     <!-- this 'deleteTask is a method' -->
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask.vue';
 
@@ -29,6 +32,7 @@ export default {
     Header,
     Tasks,
     AddTask,
+    Footer,
   },
   data() {
     return {
