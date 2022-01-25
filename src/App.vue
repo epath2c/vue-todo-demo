@@ -49,10 +49,15 @@ export default {
       const data = await res.json();
       this.tasks = [...this.tasks, data];
     },
-    deleteTask(id) {
-      console.log('task', id);
+    async deleteTask(id) {
       if (confirm('Are you sure?')) {
-        this.tasks = this.tasks.filter((task) => task.id !== id);
+        const res = await fetch(`api/tasks/${id}`, {
+          method: 'DELETE',
+        });
+
+        res.status === 200
+          ? (this.tasks = this.tasks.filter((task) => task.id !== id))
+          : alert('Error Deleting Task');
       }
     },
     toggleReminder(id) {
