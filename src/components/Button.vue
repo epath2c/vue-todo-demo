@@ -13,8 +13,11 @@ export default {
   },
   methods: {
     onClick() {
-      this.$emit('toggle-add-task');
-      // * this button shows in the Header component, so the 'toggle-add-task' function is emitted to Header
+      this.$emit('btn-click');
+      // * change this emit as 'btn-click' can make the button emit event reusable.
+      // * In the upper level, Header, it can change the name to make this event more reasonable.
+      // * But the whole process is still the same.
+      // * If we have another component needs to use the button and emit sth, we need to define the function the name in upper level components.
     },
   },
 };
